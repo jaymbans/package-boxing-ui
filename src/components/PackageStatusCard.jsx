@@ -55,7 +55,7 @@ function PackageStatusCard() {
       //check if closed on open
       if (piece in hash) {
         const mostRecentBottom = stack.pop()
-        if (hash[piece] !== mostRecentBottom) return [false, `Error - Order Mismatch: Cannot close box type ${piece} with type ${mostRecentBottom}`]
+        if (hash[piece] !== mostRecentBottom) return [false, `Error - Order Mismatch: Cannot close box type ${piece} with type ${mostRecentBottom || "empty bottom"}`]
       } else {
         stack.push(piece)
       }
@@ -65,8 +65,6 @@ function PackageStatusCard() {
   }
 
   const submitRecord = (e) => {
-    setErrors("")
-
     e.preventDefault()
 
     const boxes = packageStr
@@ -89,6 +87,7 @@ function PackageStatusCard() {
       //adding count errors
       if (countHash[lower] !== countHash[upper]) {
         errors.push(`Error - Count Mismatch: ${lower}'s count of: ${countHash[lower] || 0} does not equal ${upper}'s count of ${countHash[upper] || 0}`)
+        setCountError(true)
       }
 
     }
@@ -97,6 +96,7 @@ function PackageStatusCard() {
 
     if (!isComplete && error.length > 0) {
       errors.push(error)
+      setOrderError(true)
     }
 
     if (errors.length > 0) {
@@ -109,6 +109,12 @@ function PackageStatusCard() {
   }
 
   const onChange = (e) => {
+    setErrors("")
+    setSuccess(false)
+    setCountError(false)
+    setOrderError(false)
+
+
     setPackageStr(e.target.value)
     const cleaned = e.target.value
       .replace(/[^wsc]/gi, "")
