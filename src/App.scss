@@ -74,6 +74,7 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: space-between;
 
     h1 {
       color: $pps-blue;
@@ -155,6 +156,7 @@ body {
       p {
         display: flex;
         color: red;
+        font-size: 13px;
       }
     }
 

@@ -114,7 +114,7 @@ function PackageStatusCard() {
       .replace(/[^wsc]/gi, "")
 
     if (e.target.value.length !== cleaned.length) {
-      setErrors(["Invalid package record"])
+      setErrors(["Invalid package record: Please only include the following characters: w,W,s,S,c,C"])
     } else {
       setErrors([])
     }
