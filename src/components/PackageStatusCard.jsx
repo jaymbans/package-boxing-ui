@@ -4,37 +4,39 @@ import PuzzleIcon from "../media/puzzle-icon.png"
 import TruckIcon from "../media/truck-icon.png"
 
 function PackageStatusCard() {
-  //data
-  const steps = [
-    {
-      icon: CalculatorIcon,
-      iconName: "calculator",
-      stepTitle: "Counting Package Pieces",
-      error: false,
-      success: false
-    },
-    {
-      icon: PuzzleIcon,
-      iconName: "puzzle",
-      stepTitle: "Matching Package Pieces",
-      error: false,
-      success: false
-    },
-    {
-      icon: TruckIcon,
-      iconName: "truck",
-      stepTitle: "Shipping Status",
-      error: false,
-      success: false
-    },
-  ]
-
   //state
   const [errors, setErrors] = useState([])
   const [countError, setCountError] = useState(false)
   const [orderError, setOrderError] = useState(false)
   const [success, setSuccess] = useState(false)
   const [packageStr, setPackageStr] = useState("")
+
+  //data
+  const steps = [
+    {
+      icon: CalculatorIcon,
+      iconName: "calculator",
+      stepTitle: "Counting Package Pieces",
+      error: countError,
+      success: success
+    },
+    {
+      icon: PuzzleIcon,
+      iconName: "puzzle",
+      stepTitle: "Matching Package Pieces",
+      error: orderError,
+      success: success
+    },
+    {
+      icon: TruckIcon,
+      iconName: "truck",
+      stepTitle: "Shipping Status",
+      error: false,
+      success: success
+    },
+  ]
+
+
 
   //functions
   const packBoxes = (boxes) => {
@@ -68,7 +70,10 @@ function PackageStatusCard() {
     e.preventDefault()
 
     const boxes = packageStr
-    console.log(boxes)
+    if (!packageStr.length) {
+      setErrors("Package record cannot be empty")
+      return
+    }
 
     //store count and errors
     const countHash = {}
@@ -178,7 +183,7 @@ function PackageStatusCard() {
           </>
         )
       }
-      <input disabled={errors.length > 0} className='submit-btn' type="submit" value="SUBMIT" />
+      <input disabled={errors.length > 0 || !packageStr.length} className='submit-btn' type="submit" value="SUBMIT" />
     </form>
   )
 }
