@@ -4,6 +4,7 @@ import PuzzleIcon from "../media/puzzle-icon.png"
 import TruckIcon from "../media/truck-icon.png"
 
 function PackageStatusCard() {
+  //data
   const steps = [
     {
       icon: CalculatorIcon,
@@ -28,13 +29,19 @@ function PackageStatusCard() {
     },
   ]
 
+  //state
   const [errors, setErrors] = useState([])
   const [countError, setCountError] = useState(false)
   const [orderError, setOrderError] = useState(false)
   const [success, setSuccess] = useState(false)
 
+  //functions
+  const submitRecord = (e) => {
+    e.preventDefault()
+  }
+
   return (
-    <form>
+    <form onSubmit={submitRecord}>
       <h1>Package Status</h1>
       <input type="text" placeholder='Enter package record' />
       <div className="stepper-container">
