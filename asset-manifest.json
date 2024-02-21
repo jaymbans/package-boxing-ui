@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/package-boxing-ui/static/css/main.21ca2e64.css",
-    "main.js": "/package-boxing-ui/static/js/main.3ba5245a.js",
+    "main.js": "/package-boxing-ui/static/js/main.2e8ebbdb.js",
     "static/media/logo.png": "/package-boxing-ui/static/media/logo.53b160424c79a07ad121.png",
     "index.html": "/package-boxing-ui/index.html",
     "main.21ca2e64.css.map": "/package-boxing-ui/static/css/main.21ca2e64.css.map",
-    "main.3ba5245a.js.map": "/package-boxing-ui/static/js/main.3ba5245a.js.map"
+    "main.2e8ebbdb.js.map": "/package-boxing-ui/static/js/main.2e8ebbdb.js.map"
   },
   "entrypoints": [
     "static/css/main.21ca2e64.css",
-    "static/js/main.3ba5245a.js"
+    "static/js/main.2e8ebbdb.js"
   ]
 }
