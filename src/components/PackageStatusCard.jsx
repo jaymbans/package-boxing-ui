@@ -36,41 +36,50 @@ function PackageStatusCard() {
   return (
     <form>
       <h1>Package Status</h1>
-      <input type="text" />
+      <input type="text" placeholder='Enter package record' />
       <div className="stepper-container">
         {
-          steps.map(step => {
+          steps.map((step, i) => {
             return (
               <div className="step">
                 <div className="text">
                   <img alt={step.iconName} src={step.icon} />
                   <h5>{step.stepTitle}</h5>
                   {
-                    step.error && <img alt='error-icon' />
+                    step.error && <img alt='error-icon'
+                      src={require("../media/error-icon.png")}
+                    />
                   }
                   {
-                    step.success && <img alt='success-icon' />
+                    step.success && <img alt='success-icon'
+                      src={require("../media/success-icon.png")} />
                   }
                 </div>
-                <div className="divider"></div>
+                {
+                  i < steps.length - 1 &&
+                  <div className="divider"></div>
+                }
               </div>
             )
           })
         }
       </div>
       {
-        success && <h5>Success! Your package record has been validated</h5>
+        success && <h5 className='success'>Success! Your package record has been validated</h5>
       }
       {
         errors.length > 0 && (
           <>
-            <h5>There were errors with your package record</h5>
+            <h5 className='error'>There were errors with your package record</h5>
             <div className="error-container">
-              {errors.map(err => <p><img alt="error icon" />{err}</p>)}
+              {errors.map(err => <p><img alt="error icon"
+                src={require("../media/error-icon.png")}
+              />{err}</p>)}
             </div>
           </>
         )
       }
+      <input disabled={errors.length > 0} className='submit-btn' type="submit" value="SUBMIT" />
     </form>
   )
 }
