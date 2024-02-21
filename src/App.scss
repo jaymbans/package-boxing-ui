@@ -101,9 +101,15 @@ body {
         .text {
           display: flex;
           align-items: center;
+          position: relative;
 
           img {
             height: 25px;
+
+            &.icon {
+              right: 0;
+              position: absolute;
+            }
           }
 
           h5 {

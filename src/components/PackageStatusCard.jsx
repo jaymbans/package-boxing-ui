@@ -46,12 +46,16 @@ function PackageStatusCard() {
                   <img alt={step.iconName} src={step.icon} />
                   <h5>{step.stepTitle}</h5>
                   {
-                    step.error && <img alt='error-icon'
+                    step.error && <img
+                      className='icon'
+                      alt='error-icon'
                       src={require("../media/error-icon.png")}
                     />
                   }
                   {
-                    step.success && <img alt='success-icon'
+                    step.success && <img
+                      className='icon'
+                      alt='success-icon'
                       src={require("../media/success-icon.png")} />
                   }
                 </div>
