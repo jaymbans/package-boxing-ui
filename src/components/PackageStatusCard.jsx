@@ -105,7 +105,7 @@ function PackageStatusCard() {
     }
 
     if (errors.length > 0) {
-      setErrors(errors.sort((a, b) => a - b))
+      setErrors(Array.from(new Set(errors)).sort((a, b) => a - b))
     } else {
       setSuccess(true)
     }
